@@ -99,6 +99,9 @@ fi
 
 # Print statistics
 echo -e "\nFiles copied successfully. Total files copied: $counter"
+if [ "$delete_file" = true ]; then
+    echo "Source files were deleted after copying."
+fi
 for ext in "${!file_count[@]}"; do
     echo "Files with extension .$ext: ${file_count[$ext]}"
 done
