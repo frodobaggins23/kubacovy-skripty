@@ -44,7 +44,7 @@ mkdir -p "$dest_folder"
 # Define file extensions based on file group selection
 case $file_group in
     image)
-        file_extensions=("jpg" "JPG" "png" "PNG" "gif" "GIF" "raw")
+        file_extensions=("jpg" "JPG" "jpeg" "png" "PNG" "gif" "GIF" "raw")
         ;;
     video)
         file_extensions=("mp4" "avi" "mov" "mkv")
@@ -78,7 +78,7 @@ for file_extension in "${file_extensions[@]}"; do
         mkdir -p "$dest_dir"
         
         # Copy the file to the destination directory
-        cp "$file" "$dest_dir"
+        cp -p "$file" "$dest_dir"
     
         # Increment the counters
         counter=$((counter+1))
