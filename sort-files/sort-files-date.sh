@@ -65,6 +65,6 @@ echo -e "\nFiles copied successfully. Total files copied: $counter"
 if [ "$delete_source" = true ]; then
     echo "Source files were deleted after copying."
 fi
-for year in "${!file_count[@]}"; do
+for year in $(echo "${!file_count[@]}" | tr ' ' '\n' | sort); do
     echo "Files created in $year: ${file_count[$year]}"
 done
