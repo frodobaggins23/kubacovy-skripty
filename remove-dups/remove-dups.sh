@@ -24,7 +24,7 @@ echo "Removing duplicates from cleanup directory: $CLEANUP_DIR"
 fdupes -r -d -N $CLEANUP_DIR &&
 
 # wait for user prompt to continue
-read -p "Press enter to continue" &&
+read -p "Press enter to continue" -r &&
 
 # remove files from cleanup directory that are duplicates of files in source directory
 echo "Removing files from cleanup directory that are duplicates of files in source directory: $SOURCE_DIR" &&
@@ -32,7 +32,7 @@ fdupes -r "$SOURCE_DIR" "$CLEANUP_DIR" | grep -v "$SOURCE_DIR" | grep -v '^$' > 
 DUPLICATES=$(wc -l fdupes | awk '{print $1}')
 echo "Number of duplicates found: $DUPLICATES" 
 
-read -p "Press enter to continue" &&
+read -p "Press enter to continue" -r &&
 
 if [ $DUPLICATES -gt 0 ]; then
     xargs -d '\n' rm -v < fdupes &&
